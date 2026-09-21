@@ -1,3 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background-body: #f8fafc;
+    --background-cards: #ffffff;
+    --primary-color: #6366f1;
+    --text-primary: #1e293b;
+    --text-muted: #64748b;
+    --delete-btn: #ef4444;
+    --toggle-btn: #10b981;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-body);
+}
+
+.container{
+    margin: 0 20%;
+}
+
+h1{
+    background-color: var(--background-cards);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-book-btn{
+    width: 30%;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.new-book-btn:hover{
+    background-color: var(--background-body);
+    color: var(--primary-color);
+}
+
+dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: var(--background-cards);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.row{
+    margin: 8px 0;
+}
+
+.add-book-btn{
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    transition: 0.5s;
+    border-radius: 30px;
+}
+
+.add-book-btn:hover{
+    background-color: white;
+    color: var(--primary-color);
+}
+
+label{
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.library-container{
+    margin: 40px 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+}
+
+.book-card{
+    padding: 25px;
+    background-color: var(--background-cards);
+    color: var(--text-muted);
+    border-radius: 20px;
+}
+
+.toggleRead, .delete-btn{
+    width: 50%;
+    margin: 10px 0;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+}
+
+.delete-btn{
+    background-color: var(--delete-btn);
+    color: white;
+}
+
+.toggleRead{
+    background-color: var(--toggle-btn);
+    color: white;
 }
