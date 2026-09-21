@@ -12,7 +12,7 @@ const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
 const readInput = document.querySelector("#read");
 const addBookBtn = document.querySelector(".add-book-btn");
-const library = [];
+let library = [];
 class Book {
     id;
     title;
@@ -26,16 +26,15 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
+    toggleReadStatus() {
+        this.read = !this.read;
+    }
 }
 const addBook = (newBook) => {
     return library.push(newBook);
 };
-// const book1 = new Book("The Hobbit", "J.R.R. Tolkien", 295, true)
-// const book2 = new Book("1984", "George Orwell", 328, false)
-// const addBook = (newBook: Book) => {
-//     return library.push(newBook)
-// }
 const displayBook = () => {
+    container.innerHTML = "";
     library.forEach((book) => {
         const div = document.createElement("div");
         div.classList.add("book-card");
@@ -48,12 +47,29 @@ const displayBook = () => {
         paragrahPages.classList.add("book-pages");
         paragrahPages.innerHTML = `Book Pages: ${String(book.pages)}`;
         const read = document.createElement("p");
-        read.innerHTML = book.read ? "Readed a lot" : "Not Readed enough";
+        read.innerHTML = book.read ? "Readed ✔" : "Not Readed ❌";
+        const toggle = document.createElement("button");
+        toggle.classList.add("toggleRead");
+        toggle.innerHTML = "toggle";
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.innerHTML = "Delete";
+        deleteBtn.setAttribute("data-id", book.id);
+        deleteBtn.addEventListener("click", () => {
+            library = library.filter(b => b.id !== book.id);
+            displayBook();
+        });
+        toggle.addEventListener("click", () => {
+            book.toggleReadStatus();
+            displayBook();
+        });
         div.appendChild(header);
         div.appendChild(paragrahAuthor);
         div.appendChild(paragrahPages);
         div.appendChild(read);
-        container?.appendChild(div);
+        div.appendChild(toggle);
+        div.appendChild(deleteBtn);
+        container.appendChild(div);
     });
 };
 addBookBtn.addEventListener("click", (e) => {
@@ -62,16 +78,14 @@ addBookBtn.addEventListener("click", (e) => {
     const authorValue = authorInput.value;
     const pagesValue = pagesInput.value;
     const readValue = readInput.checked;
-    console.log(titleValue);
-    console.log(authorValue);
-    console.log(typeof pagesValue);
-    console.log(readValue);
     const newUserBook = new Book(titleValue, authorValue, Number(pagesValue), readValue);
     addBook(newUserBook);
     displayBook();
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = false;
 });
-// addBook()
-// addBook(book2)
 openBtn.addEventListener("click", () => {
     dialog.showModal();
 });
