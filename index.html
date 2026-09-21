@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+    <script type="module" src="index.js" defer></script>
+</head>
+
+<body>
+    <h1>Odin Library</h1>
+    <dialog class="book-info">
+        <div class="row">
+            <label for="title">Book Title: </label>
+            <input type="text" id="title" name="title" placeholder="The Hobbit">
+        </div>
+        <div class="row">
+            <label for="author">Book Author: </label>
+            <input type="text" id="author" name="author" placeholder="J.R.R. Tolkien">
+        </div>
+        <div class="row">
+            <label for="pages">Book Pages: </label>
+            <input type="number" id="pages">
+        </div>
+        <div class="row">
+            <label for="read">Read</label>
+            <input type="checkbox" id="read" name="read">
+        </div>
+        <button class="add-book-btn">Add Book</button>
+    </dialog>
+    <button class="new-book-btn">New Book</button>
+    <div class="library-container"></div>
+</body>
+</html>
